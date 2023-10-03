@@ -6,6 +6,7 @@ import "./Costs.css";
 import React, { useState } from "react";
 
 const Costs = (props) => {
+  
   const costsArr = props.costs.map((item) => (
     <CostItem
       key={props.costs.indexOf(item)}
@@ -19,8 +20,8 @@ const Costs = (props) => {
 
   const setCurrentYearHandler = (year) => {
     setSelectedYear(year);
+    props.onSelectYear(year); //передаэмо рік в батьківський компонент
   };
-  console.log(selectedYear, "Cost component");
 
   return (
     <div>
