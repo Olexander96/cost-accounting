@@ -5,7 +5,7 @@ import React, { useState }  from "react";
 const INITIAL_COSTS = [
   {
     id: 1,
-    date: new Date(2021, 2, 24),
+    date: new Date(2022, 2, 24),
     description: "Ноутбук",
     amount: 999.99
   },
@@ -17,9 +17,15 @@ const INITIAL_COSTS = [
   },
   {
     id: 3,
-    date: new Date(2021, 5, 20),
+    date: new Date(2020, 5, 20),
     description: "Футболка",
     amount: 70.05
+  },
+  {
+    id: 4,
+    date: new Date(2020, 3, 5),
+    description: "Монітор",
+    amount: 1200
   }
 ];
 
@@ -47,21 +53,12 @@ function App() {
     })
   };
 
-  const selectYearHandler = (selectedYear) => {
-    // доробити!!!
-    // setCosts(prevCosts => {
-    //   const filteredCosts = prevCosts.filter(item => {
-    //     return item.date.getFullYear() === selectedYear;
-    //   });
 
-    //   return filteredCosts;
-    // })
-  };
 
   return (
     <div className="App">
       <NewCost onAddCost = {addNewCostHandler}/>
-      <Costs costs={costs} onSelectYear={selectYearHandler}/>
+      <Costs costs={costs} />
     </div>
   );
 }
