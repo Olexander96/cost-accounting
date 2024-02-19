@@ -6,33 +6,19 @@ const CostForm = (props) => {
     const [inputAmount, setInputAmount] = useState('');
     const [inputDate, setInputDate] = useState('');
 
-    //спосіб 2 і 3
-    // const [userInput, setUserInput] = useState({
-    //     name: '',
-    //     amount: '',
-    //     date: ''
-    // })
-
     const nameChangeHandler = (event) => {
         setInputName(event.target.value)
-        // спосіб 2
-        // setUserInput({
-        //     ...userInput, //важливо відображати попередній стан інших інпутів userInput - не завжи попереднє состояніє
-        //     name: event.target.value
-        // })
-        //спосіб 3
-        // setUserInput((previousState) => { //краще ніж 2 бо буде гарантоване попереднє состояніє previousState
-        //     return {
-        //         ...previousState,
-        //         name: event.target.value  
-        //     }
-        // })
+        
     };
     const amountChangeHandler = (event) => {
         setInputAmount(event.target.value)
     };
     const dateChangeHandler = (event) => {
         setInputDate(event.target.value)
+    };
+
+    const onShowFormHandler = (value) => { //ховаємо / показуємо форму
+        props.onShowForm(value); 
     };
 
     const submitHandler = (event) => {
@@ -44,10 +30,11 @@ const CostForm = (props) => {
             date: new Date(inputDate)
         }
 
-        props.onAddNewCost(costDate);
+        props.onAddNewCost(costDate); //передаємо дані з форми
         setInputName('');
         setInputAmount('');
         setInputDate('');
+        onShowFormHandler(false); //ховаємо форму
     }
 
     return (
@@ -80,6 +67,7 @@ const CostForm = (props) => {
                 </div>
                 <div className="new-cost__actions">
                     <button type="submit">Додати витрату</button>
+                    <button type="button" onClick={ () => onShowFormHandler(false) }>Відмінити</button>
                 </div>
             </div>
         </form>

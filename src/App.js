@@ -33,11 +33,6 @@ function App() {
   
   const [costs, setCosts] = useState(INITIAL_COSTS);
 
-  //Раніше було так і так воно працює під капотом, потрібно - import React from "react";
-  // return React.createElement('div', {}, 
-  //   React.createElement('h1', {}, 'Вивчаємо React'), 
-  //   React.createElement(Costs, {costs: costs})
-  // )
 
   const addNewCostHandler = (cost) => {
     // prevCosts це по факту costs в useState!
